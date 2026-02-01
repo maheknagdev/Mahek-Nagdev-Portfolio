@@ -41,7 +41,7 @@ const Navbar = () => {
 
           {/* Social Links */}
           <div className="nav-actions">
-            <a href="https://github.com/maheknagdev" target="_blank" rel="noopener noreferrer" className="icon-link">
+            <a href="https://github.com/mahekn23v" target="_blank" rel="noopener noreferrer" className="icon-link">
               <Github size={20} />
             </a>
             <a href="https://www.linkedin.com/in/mahek-nagdev-382a7b1b8/" target="_blank" rel="noopener noreferrer" className="icon-link">

@@ -161,16 +161,6 @@ const Projects = () => {
                     <h3>{project.title}</h3>
                     <p className="project-subtitle-simple">{project.subtitle}</p>
                   </div>
-                  {project.github && (
-                    <a 
-                      href={project.github} 
-                      target="_blank" 
-                      rel="noopener noreferrer"
-                      className="project-link-icon"
-                    >
-                      <Github size={20} />
-                    </a>
-                  )}
                 </div>
 
                 <p className="project-description-simple">
@@ -218,7 +208,7 @@ const Projects = () => {
           transition={{ duration: 0.6, delay: 0.4 }}
         >
           <p>Want to see more of my work?</p>
-          <a href="https://github.com/mahekn23" target="_blank" rel="noopener noreferrer" className="btn btn-primary">
+          <a href="https://github.com/maheknagdev" target="_blank" rel="noopener noreferrer" className="btn btn-primary">
             <Github size={20} />
             View All on GitHub
             <ArrowUpRight size={20} />
