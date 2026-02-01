@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react'
-import { Menu, X, Github, Linkedin, Mail } from 'lucide-react'
+import { Menu, X, Github, Linkedin, Mail, Moon, Sun } from 'lucide-react'
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
+  const [darkMode, setDarkMode] = useState(true) // Default to dark mode
 
   useEffect(() => {
     const handleScroll = () => {
@@ -13,12 +14,27 @@ const Navbar = () => {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
+  useEffect(() => {
+    // Apply theme class to body
+    if (darkMode) {
+      document.body.classList.add('dark-mode')
+      document.body.classList.remove('light-mode')
+    } else {
+      document.body.classList.add('light-mode')
+      document.body.classList.remove('dark-mode')
+    }
+  }, [darkMode])
+
   const scrollToSection = (id) => {
     const element = document.getElementById(id)
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' })
       setIsOpen(false)
     }
+  }
+
+  const toggleTheme = () => {
+    setDarkMode(!darkMode)
   }
 
   return (
@@ -39,17 +55,23 @@ const Navbar = () => {
             <li><a onClick={() => scrollToSection('contact')}>Contact</a></li>
           </ul>
 
-          {/* Social Links */}
+          {/* Social Links + Theme Toggle */}
           <div className="nav-actions">
-            <a href="https://github.com/mahekn23v" target="_blank" rel="noopener noreferrer" className="icon-link">
+            <a href="https://github.com/mahekn23" target="_blank" rel="noopener noreferrer" className="icon-link">
               <Github size={20} />
             </a>
-            <a href="https://www.linkedin.com/in/mahek-nagdev-382a7b1b8/" target="_blank" rel="noopener noreferrer" className="icon-link">
+            <a href="https://linkedin.com/in/mahek-nagdev" target="_blank" rel="noopener noreferrer" className="icon-link">
               <Linkedin size={20} />
             </a>
             <a href="mailto:nagdev.mahek2310@gmail.com" className="icon-link">
               <Mail size={20} />
             </a>
+            
+            {/* Theme Toggle Button */}
+            <button className="theme-toggle" onClick={toggleTheme} aria-label="Toggle theme">
+              {darkMode ? <Sun size={20} /> : <Moon size={20} />}
+            </button>
+            
             <button className="mobile-menu-btn" onClick={() => setIsOpen(!isOpen)}>
               {isOpen ? <X size={24} /> : <Menu size={24} />}
             </button>

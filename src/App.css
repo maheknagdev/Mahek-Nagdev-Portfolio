@@ -34,6 +34,51 @@
   --transition-slow: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+/* Root Variables - Updated Color Palette */
+:root {
+  /* Color Palette */
+  --dark-red: #410A15;
+  --ruby-red: #8B1538;
+  --indian-red: #A3415B;
+  --silk: #D4A5B3;
+  --grey-beige: #9BA17B;
+  
+  /* ... existing variables ... */
+}
+
+/* ADD THIS - Light Mode Variables */
+/* Light Mode Variables - IMPROVED CONTRAST */
+body.light-mode {
+  /* Light Theme Colors */
+  --bg-primary: #ffffff;
+  --bg-secondary: #f8f9fa;
+  --bg-tertiary: #e9ecef;
+  --text-primary: #1a1a1a;
+  --text-secondary: #4a4a4a;
+  --text-muted: #6b6b6b;
+  
+  /* Shadows for light mode */
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.12);
+  --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.15);
+  --shadow-glow: 0 0 20px rgba(139, 21, 56, 0.2);
+}
+
+/* Keep dark mode as default */
+body.dark-mode {
+  --bg-primary: #0a0a0a;
+  --bg-secondary: #141414;
+  --bg-tertiary: #1a1a1a;
+  --text-primary: #ffffff;
+  --text-secondary: #a0a0a0;
+  --text-muted: #666666;
+  
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.5);
+  --shadow-glow: 0 0 20px rgba(139, 21, 56, 0.3);
+}
+
 /* Reset and Base Styles */
 * {
   margin: 0;
@@ -51,6 +96,13 @@ body {
   color: var(--text-primary);
   background: var(--bg-primary);
   overflow-x: hidden;
+  transition: background 0.3s ease, color 0.3s ease; /* Smooth theme transition */
+}
+
+/* Default to dark mode */
+body:not(.light-mode) {
+  background: #0a0a0a;
+  color: #ffffff;
 }
 
 .container {
@@ -172,6 +224,7 @@ body {
 }
 
 /* ==================== NAVBAR ==================== */
+
 .navbar {
   position: fixed;
   top: 0;
@@ -181,6 +234,18 @@ body {
   z-index: 1000;
   transition: var(--transition);
   border-bottom: 1px solid transparent;
+}
+
+/* ADD THIS - Light mode navbar fix */
+body.light-mode .navbar {
+  background: rgba(255, 255, 255, 0.9);
+  border-bottom: 1px solid rgba(139, 21, 56, 0.1);
+}
+
+body.light-mode .navbar.scrolled {
+  background: rgba(255, 255, 255, 0.95);
+  border-bottom: 1px solid rgba(139, 21, 56, 0.2);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
 .navbar.scrolled {
@@ -268,6 +333,28 @@ body {
   transition: var(--transition);
   display: flex;
   align-items: center;
+}
+
+.theme-toggle {
+  background: rgba(139, 21, 56, 0.1);
+  border: 1px solid rgba(139, 21, 56, 0.2);
+  border-radius: 10px;
+  color: var(--text-secondary);
+  cursor: pointer;
+  padding: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  transition: var(--transition);
+}
+
+.theme-toggle:hover {
+  background: var(--ruby-red);
+  border-color: var(--ruby-red);
+  color: white;
+  transform: translateY(-2px);
 }
 
 .icon-link:hover {
@@ -1971,6 +2058,95 @@ body {
   color: var(--ruby-red);
   font-weight: 600;
   font-size: 0.9375rem;
+}
+
+/* ==================== LIGHT MODE OVERRIDES ==================== */
+
+/* Badges with better contrast in light mode */
+body.light-mode .section-badge {
+  background: rgba(139, 21, 56, 0.12);
+  border: 1px solid rgba(139, 21, 56, 0.4);
+}
+
+body.light-mode .category-badge {
+  background: rgba(139, 21, 56, 0.12);
+  border: 1px solid rgba(139, 21, 56, 0.3);
+}
+
+body.light-mode .status-badge {
+  background: rgba(155, 161, 123, 0.2);
+  border: 1px solid rgba(155, 161, 123, 0.4);
+  color: #4a5a2f;
+}
+
+body.light-mode .type-badge-new {
+  opacity: 0.95;
+}
+
+/* Cards in light mode */
+body.light-mode .highlight-box,
+body.light-mode .edu-gpa,
+body.light-mode .project-metrics-simple,
+body.light-mode .achievement-metric-inline {
+  background: rgba(139, 21, 56, 0.08);
+  border: 1px solid rgba(139, 21, 56, 0.15);
+}
+
+body.light-mode .cert-status.active {
+  background: rgba(139, 21, 56, 0.12);
+  border: 1px solid rgba(139, 21, 56, 0.3);
+}
+
+/* Skill tags in light mode */
+body.light-mode .skill-tag,
+body.light-mode .tech-tag-simple,
+body.light-mode .edu-tag,
+body.light-mode .skill-tag-exp {
+  background: rgba(139, 21, 56, 0.12);
+  color: var(--ruby-red);
+  border: 1px solid rgba(139, 21, 56, 0.3);
+}
+
+/* Awards and activities badges */
+body.light-mode .award-date {
+  background: rgba(139, 21, 56, 0.12);
+  color: var(--ruby-red);
+  border: 1px solid rgba(139, 21, 56, 0.3);
+}
+
+body.light-mode .project-award-simple {
+  background: rgba(212, 165, 179, 0.2);
+  border: 1px solid rgba(212, 165, 179, 0.4);
+  color: #8B1538;
+}
+
+/* Border adjustments */
+body.light-mode .education-card,
+body.light-mode .experience-details,
+body.light-mode .project-card-simple,
+body.light-mode .skill-card,
+body.light-mode .cert-card,
+body.light-mode .award-card,
+body.light-mode .activity-card,
+body.light-mode .contact-card {
+  border: 1px solid rgba(139, 21, 56, 0.2);
+}
+
+body.light-mode .education-card:hover,
+body.light-mode .experience-details:hover,
+body.light-mode .project-card-simple:hover,
+body.light-mode .skill-card:hover,
+body.light-mode .cert-card:hover,
+body.light-mode .award-card:hover,
+body.light-mode .activity-card:hover,
+body.light-mode .contact-card:hover {
+  border-color: var(--ruby-red);
+}
+
+/* Theme toggle button styling */
+body.light-mode .theme-toggle {
+  background: rgba(139, 21, 56, 0.1);
+  border: 1px solid rgba(139, 21, 56, 0.3);
 }
 
 /* ==================== RESPONSIVE ==================== */
