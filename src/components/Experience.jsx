@@ -230,27 +230,28 @@ const Experience = () => {
               ))}
             </div>
 
-            {/* Achievements */}
+            {/* Achievements - Single Box with Bulleted List */}
             <div className="achievements-new">
               <h4>Key Achievements</h4>
-              <div className="achievements-grid">
-                {experiences[activeTab].achievements.map((achievement, idx) => (
-                  <motion.div
-                    key={idx}
-                    className="achievement-card"
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.4, delay: idx * 0.1 }}
-                  >
-                    <div className="achievement-icon" style={{ background: experiences[activeTab].color }}>
-                      {achievement.icon}
-                    </div>
-                    <div className="achievement-content">
-                      <p>{achievement.text}</p>
-                      <span className="achievement-metric">{achievement.metric}</span>
-                    </div>
-                  </motion.div>
-                ))}
+              <div className="achievements-single-box">
+                <ul className="achievements-list">
+                  {experiences[activeTab].achievements.map((achievement, idx) => (
+                    <motion.li
+                      key={idx}
+                      initial={{ opacity: 0, x: -20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ duration: 0.3, delay: idx * 0.1 }}
+                    >
+                      <div className="achievement-bullet-icon" style={{ background: experiences[activeTab].color }}>
+                        {achievement.icon}
+                      </div>
+                      <div className="achievement-text">
+                        {achievement.text}
+                        <span className="achievement-metric-inline">{achievement.metric}</span>
+                      </div>
+                    </motion.li>
+                  ))}
+                </ul>
               </div>
             </div>
 

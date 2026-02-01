@@ -53,25 +53,7 @@ const About = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
           >
             <p className="lead">
-              I'm a <strong>Master's student in Computer Science at Northeastern University</strong> with 
-              2.5 years of professional experience as a Salesforce Developer and Consultant at Deloitte USI.
-            </p>
-            <p>
-              My journey in technology has been driven by a passion for building <strong>scalable, efficient systems</strong> that 
-              solve real-world problems. At Deloitte, I architected global Salesforce CPQ rollouts, 
-              developed 23+ automation solutions, and led cross-functional teams across multiple international clients 
-              in the US, France, and Belgium.
-            </p>
-            <p>
-              Currently, I'm expanding my expertise in <strong>cloud computing</strong> and <strong>full-stack development</strong>, 
-              with hands-on projects involving AWS services (Lambda, S3, DynamoDB), database design, and modern web frameworks. 
-              I've successfully delivered projects ranging from genomics data processing pipelines to life-critical organ 
-              donation management systems.
-            </p>
-            <p>
-              I believe in writing <strong>clean, maintainable code</strong> and following best practices in software development. 
-              My approach combines technical excellence with strong problem-solving skills, test-driven development, 
-              and a commitment to delivering high-quality solutions that exceed expectations.
+              MS CS student at Northeastern with 2.5 years at Deloitte USI, where I architected global Salesforce CPQ rollouts and led international teams. Currently expanding expertise in cloud computing and full-stack development through AWS projects, passionate about building scalable systems with clean code and TDD practices.
             </p>
           </motion.div>
 

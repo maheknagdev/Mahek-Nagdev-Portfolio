@@ -7,8 +7,8 @@ const Education = () => {
       degree: "Master of Science in Computer Science",
       school: "Northeastern University",
       location: "Boston, MA",
-      period: "September 2025 - Present",
-      gpa: "Expected Graduation 2027",
+      period: "September 2025 - Expected Graduation 2027",
+      gpa: "GPA: 3.7/4.0 (Fall 2025)",
       logo: "🎓",
       color: "#8B1538",
       courses: [
@@ -18,13 +18,12 @@ const Education = () => {
         "Algorithms"
       ],
       achievements: [
-        "GPA: 3.7/4.0 (Fall 2025)",
         "Built a full-stack transplant management system using Django and MySQL",
         "Developed a Java calendar management system with Swing GUI implementing MVC architecture"
       ]
     },
     {
-      degree: "Bachelor of Engineering in Computer Engineering",
+      degree: "Bachelor of Engineering in Computers",
       school: "Vivekanand Education Society's Institute of Technology",
       location: "Mumbai, India",
       period: "August 2018 - August 2022",

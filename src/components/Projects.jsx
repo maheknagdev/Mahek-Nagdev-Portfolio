@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { ExternalLink, Github, Award, ArrowUpRight, Code, Database, Cloud, Zap } from 'lucide-react'
+import { Github, Award, ArrowUpRight, Code, Database, Cloud, Zap } from 'lucide-react'
 import { useState } from 'react'
 
 const Projects = () => {
@@ -8,22 +8,21 @@ const Projects = () => {
   const projects = [
     {
       id: 1,
-      title: "Variant Flow - Ongoing Project",
+      title: "Variant Flow",
       subtitle: "AWS Genomics Data Pipeline",
       description: "Serverless genomics data processing pipeline using AWS Lambda, S3, DynamoDB, and API Gateway to process large VCF files, extract genetic variants, and visualize clinical insights through interactive React dashboard.",
       longDescription: "Building a complete serverless architecture for processing genomic variant data at scale. Implementing automated classification algorithms and real-time analytics dashboard for clinical insights.",
       tags: ["AWS Lambda", "S3", "DynamoDB", "API Gateway", "React", "Python"],
       github: "https://github.com/maheknagdev/variantflow",
-      featured: true,
       icon: <Cloud size={32} />,
-      gradient: "linear-gradient(135deg, #8B1538 0%, #A3415B 100%)",
-      image: "/VariantFlow.png", // Add your project screenshots
+      color: "#8B1538",
       metrics: [
         { label: "Processing Speed", value: "5x faster", icon: <Zap size={16} /> },
         { label: "Accuracy", value: "95%+", icon: <Database size={16} /> },
         { label: "Serverless", value: "100%", icon: <Cloud size={16} /> }
       ],
-      category: "Cloud & AI"
+      category: "Cloud & AI",
+      status: "Ongoing"
     },
     {
       id: 2,
@@ -33,10 +32,8 @@ const Projects = () => {
       longDescription: "Engineered a life-critical system for organ donation matching. Implemented complex matching algorithms achieving 95%+ compatibility accuracy with real-time patient data processing.",
       tags: ["Django", "MySQL", "React", "REST API", "PostgreSQL"],
       github: "https://github.com/maheknagdev/lifelink",
-      featured: true,
       icon: <Database size={32} />,
-      gradient: "linear-gradient(135deg, #A3415B 0%, #D4A5B3 100%)",
-      image: "/LifeLink.png",
+      color: "#A3415B",
       metrics: [
         { label: "Match Accuracy", value: "95%+", icon: <Database size={16} /> },
         { label: "DB Tables", value: "18", icon: <Code size={16} /> },
@@ -52,10 +49,8 @@ const Projects = () => {
       longDescription: "Developed a sophisticated calendar management system with support for multiple interaction modes and complex event scheduling patterns.",
       tags: ["Java", "Swing", "MVC", "JUnit", "Design Patterns"],
       github: "https://github.com/maheknagdev/eventmaster",
-      featured: false,
       icon: <Code size={32} />,
-      gradient: "linear-gradient(135deg, #410A15 0%, #8B1538 100%)",
-      image: "/EventMaster.png",
+      color: "#D4A5B3",
       metrics: [
         { label: "Test Coverage", value: "95%", icon: <Code size={16} /> },
         { label: "Design Patterns", value: "5+", icon: <Database size={16} /> }
@@ -70,10 +65,8 @@ const Projects = () => {
       longDescription: "Won Best Technical Paper at ICEAT 2022. Integrated machine learning models for agricultural decision support with real-time weather data.",
       tags: ["Machine Learning", "Django", "Computer Vision", "Python", "TensorFlow"],
       github: "https://github.com/maheknagdev/krushivikas",
-      featured: false,
       icon: <Zap size={32} />,
-      gradient: "linear-gradient(135deg, #D4A5B3 0%, #9BA17B 100%)",
-      image: "/KrushiVikas.png",
+      color: "#410A15",
       metrics: [
         { label: "Crop Prediction", value: "99%", icon: <Zap size={16} /> },
         { label: "Disease Detection", value: "95%", icon: <Database size={16} /> }
@@ -128,12 +121,12 @@ const Projects = () => {
           ))}
         </motion.div>
 
-        {/* Projects Grid */}
-        <div className="projects-showcase">
+        {/* Projects Grid - 2 Columns */}
+        <div className="projects-grid-simple">
           {filteredProjects.map((project, index) => (
             <motion.div
               key={project.id}
-              className={`project-showcase-card ${project.featured ? 'featured' : ''}`}
+              className="project-card-simple"
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -141,74 +134,73 @@ const Projects = () => {
               onMouseEnter={() => setHoveredProject(project.id)}
               onMouseLeave={() => setHoveredProject(null)}
             >
-              {/* Project Image/Icon Section */}
-              <div className="project-visual">
-                <div className="project-image-container">
-                    <img 
-                        src={project.image || '/placeholder-project.jpg'} 
-                        alt={project.title}
-                        className="project-image"
-                    />
-                    <div className="project-image-overlay" style={{ background: project.gradient }}></div>
-                    </div>
-                {project.award && (
-                  <div className="project-award">
-                    <Award size={16} />
-                    <span>{project.award}</span>
-                  </div>
-                )}
-                <div className="project-category-badge">{project.category}</div>
+              {/* Icon Header */}
+              <div className="project-icon-header" style={{ background: project.color }}>
+                {project.icon}
               </div>
 
-              {/* Project Content */}
-              <div className="project-content-new">
-                <div className="project-header-new">
+              {/* Badges */}
+              <div className="project-badges">
+                <span className="category-badge">{project.category}</span>
+                {project.status && (
+                  <span className="status-badge">{project.status}</span>
+                )}
+              </div>
+
+              {project.award && (
+                <div className="project-award-simple">
+                  <Award size={14} />
+                  <span>{project.award}</span>
+                </div>
+              )}
+
+              {/* Content */}
+              <div className="project-content-simple">
+                <div className="project-header-simple">
                   <div>
                     <h3>{project.title}</h3>
-                    <p className="project-subtitle-new">{project.subtitle}</p>
+                    <p className="project-subtitle-simple">{project.subtitle}</p>
                   </div>
-                  <div className="project-links-new">
-                    {project.github && (
-                      <a 
-                        href={project.github} 
-                        target="_blank" 
-                        rel="noopener noreferrer"
-                        className="project-icon-link"
-                      >
-                        <Github size={20} />
-                      </a>
-                    )}
-                  </div>
+                  {project.github && (
+                    <a 
+                      href={project.github} 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="project-link-icon"
+                    >
+                      <Github size={20} />
+                    </a>
+                  )}
                 </div>
 
-                <p className="project-description-new">
+                <p className="project-description-simple">
                   {hoveredProject === project.id ? project.longDescription : project.description}
                 </p>
 
                 {/* Metrics */}
-                <div className="project-metrics">
+                <div className="project-metrics-simple">
                   {project.metrics.map((metric, idx) => (
-                    <div key={idx} className="metric-item">
-                      <div className="metric-icon">{metric.icon}</div>
-                      <div className="metric-content">
-                        <span className="metric-value">{metric.value}</span>
-                        <span className="metric-label">{metric.label}</span>
+                    <div key={idx} className="metric-simple">
+                      <span className="metric-icon-simple">{metric.icon}</span>
+                      <div>
+                        <div className="metric-value-simple">{metric.value}</div>
+                        <div className="metric-label-simple">{metric.label}</div>
                       </div>
                     </div>
                   ))}
                 </div>
 
                 {/* Tech Stack */}
-                <div className="project-tech-stack">
+                <div className="project-tech-simple">
                   {project.tags.map((tag, idx) => (
-                    <span key={idx} className="tech-tag-new">{tag}</span>
+                    <span key={idx} className="tech-tag-simple">{tag}</span>
                   ))}
                 </div>
               </div>
 
-              {/* Hover Overlay */}
+              {/* Hover Effect */}
               <motion.div 
-                className="project-hover-overlay"
+                className="project-hover-effect"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: hoveredProject === project.id ? 1 : 0 }}
                 transition={{ duration: 0.3 }}
@@ -226,7 +218,7 @@ const Projects = () => {
           transition={{ duration: 0.6, delay: 0.4 }}
         >
           <p>Want to see more of my work?</p>
-          <a href="https://github.com/maheknagdev" target="_blank" rel="noopener noreferrer" className="btn btn-primary">
+          <a href="https://github.com/mahekn23" target="_blank" rel="noopener noreferrer" className="btn btn-primary">
             <Github size={20} />
             View All on GitHub
             <ArrowUpRight size={20} />

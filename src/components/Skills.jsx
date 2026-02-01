@@ -11,7 +11,7 @@ const Skills = () => {
     {
       icon: <Terminal size={32} />,
       title: "Frameworks",
-      skills: ["React.js", "Django", "Node.js", "Flask", "Lightning Web Components"]
+      skills: ["React.js", "Django", "Node.js", "Flask", "Machine Learning", "Lightning Web Components"]
     },
     {
       icon: <Database size={32} />,

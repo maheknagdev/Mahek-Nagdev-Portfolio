@@ -20,8 +20,8 @@ const Contact = () => {
     {
       icon: <Github size={28} />,
       label: "GitHub",
-      value: "maheknagdev",
-      link: "https://github.com/maheknagdev",
+      value: "mahekn23",
+      link: "https://github.com/mahekn23",
       color: "#7c212fff"
     }
   ]
